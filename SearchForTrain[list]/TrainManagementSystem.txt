@@ -1,0 +1,43 @@
+import java.sql.*;
+import java.util.ArrayList;
+
+public class TrainManagementSystem {
+	
+	public ArrayList <Train> viewTrain (String coachType, String source, String destination){
+		
+		// Fill your code here	
+		ArrayList<Train> trainList=new ArrayList<>();
+		
+		try{
+		    Connection con = DB.getConnection();
+        String query = "select * from train where source='" +source+"' AND destination='" +destination+"' AND "+coachType+" != 0 order by TRAIN_NUMBER";
+    
+        Statement st=con.createStatement();
+        ResultSet rs=st.executeQuery(query);
+        
+        while(rs.next()){
+            int trainNumber=rs.getInt(1);
+            String trainName=rs.getString(2);
+            String sourceCity=rs.getString(3);
+            String destinationCity=rs.getString(4);
+            int ac1=rs.getInt(5);
+            int ac2=rs.getInt(6);
+            int ac3=rs.getInt(7);
+            int s1=rs.getInt(8);
+            int ss=rs.getInt(9);
+            
+            trainList.add(new Train(trainNumber,trainName,sourceCity,destinationCity,ac1,ac2,ac3,s1,ss));
+            
+         }
+		 st.close();
+        con.close();
+		}catch(ClassNotFoundException | SQLException e){
+		    e.printStackTrace();
+		}
+		
+		
+		return trainList;
+		
+	}
+
+}

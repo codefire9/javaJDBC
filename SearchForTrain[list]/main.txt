@@ -1,0 +1,44 @@
+
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		// fill your code here
+		System.out.println("Enter the source");
+		String source=sc.next();
+		
+		System.out.println("Enter the destination");
+		String destination=sc.next();
+		
+		System.out.println("Enter the coach type");
+		
+		
+		String coachType=sc.next();
+		if(coachType.equalsIgnoreCase("AC1")||coachType.equalsIgnoreCase("AC2")||
+		coachType.equalsIgnoreCase("AC3")|| coachType.equalsIgnoreCase("sleeper")||coachType.equalsIgnoreCase("Seater")){
+		    
+		    		
+		
+TrainManagementSystem tms=new TrainManagementSystem();
+ArrayList<Train> trainLs= tms.viewTrain(coachType,source,destination);
+
+if(trainLs.isEmpty()){
+    System.out.println("No trains found");
+}
+ 
+    
+    for(Train t:trainLs){
+        System.out.println(t.getTrainNumber()+" "+t.getTrainName());
+        
+        
+    }
+    
+ 
+    return ;
+		}
+ 
+System.out.println("Invalid Coach Type");
+		
+	}
+}
