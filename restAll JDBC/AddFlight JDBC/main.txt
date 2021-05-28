@@ -1,0 +1,17 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        
+        Flight flight=new Flight(1,"india","usa",50,2000.0);
+        FlightManagementSystem fMS=new FlightManagementSystem();
+        
+        if(fMS.addFlight(flight)){
+            System.out.println("Flight details added successfully");
+        }
+        else{
+            System.out.println("Addition not done");
+        }
+        
+    }
+}

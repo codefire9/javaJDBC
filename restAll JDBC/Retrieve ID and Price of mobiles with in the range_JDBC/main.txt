@@ -1,0 +1,40 @@
+
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		// fill your code here
+		
+		System.out.println("Enter the minimum range");
+		int minRange=sc.nextInt();
+		
+		System.out.println("Enter the maximum range");
+		int maxRange=sc.nextInt();
+		sc.close();
+		
+// 		MobileManagementSystem mMS=new MobileManagementSystem();
+// 		Map<Integer,Integer> hs=mMS.viewMobileWithInTheRange(minRange,maxRange);
+// 		 for (Map.Entry<Integer, Integer> entry : hs.entrySet()) {
+//              System.out.println(entry.getKey() + ":" + entry.getValue());
+//         }
+		
+// 		}
+		
+		MobileManagementSystem mobileManagementSystem = new MobileManagementSystem();
+
+	 Map<Integer, Integer> mobiles = mobileManagementSystem.viewMobileWithInTheRange(minRange, maxRange);
+
+        if (mobiles.isEmpty()) {
+            System.out.println("No mobiles found for the given range\n" +
+                    "\n");
+        } else {
+            mobiles.forEach((key, value) -> System.out.println(key + ":" + value));
+        }	
+
+		
+	
+	}
+	
+	
+}

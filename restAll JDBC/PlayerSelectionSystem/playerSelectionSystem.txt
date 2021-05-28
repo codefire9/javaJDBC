@@ -1,0 +1,41 @@
+import java.util.*;
+import java.sql.*;
+
+public class PlayerSelectionSystem {
+
+	public List<String> playersBasedOnHeightWeight (double minHeight, double maxWeight){
+		
+		// Fill your code here	
+		
+			ArrayList<String> PlayerList=new ArrayList<>();
+		
+		try{
+		    Connection con = DB.getConnection();
+        String query = "select * from player where height >=" +minHeight+" AND weight <=" +maxWeight+" order by playerName";
+    
+        Statement st=con.createStatement();
+        ResultSet rs=st.executeQuery(query);
+        
+        while(rs.next()){
+        
+            String playerName=rs.getString("playerName");
+  
+            PlayerList.add(playerName);
+            
+         }
+		 st.close();
+        con.close();
+		}catch(ClassNotFoundException | SQLException e){
+		    e.printStackTrace();
+		}
+		
+		
+		return PlayerList;
+		
+		
+		
+		
+		
+//		return null;
+	}
+}
